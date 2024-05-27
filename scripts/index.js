@@ -13,7 +13,7 @@ const currStreak = window.localStorage.getItem("wordsle") || JSON.stringify({});
 let newStreak;
 
 // set level
-const levelPages = ["/index.html", "/stage-two.html", "/stage-three.html"];
+const levelPages = ["/", "/stage-two.html", "/stage-three.html"];
 const level = levelPages.indexOf(document.location.pathname);
 
 // set dates
