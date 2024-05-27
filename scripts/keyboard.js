@@ -11,6 +11,13 @@ export const makeKeyboard = (parent) => {
     button.setAttribute("class", "keyboardButton");
     parent.appendChild(button);
   };
+  const backSpace = document.createElement("button");
+
+  const done = document.createElement("button");
+  backSpace.setAttribute("id", "backspace");
+  backSpace.innerText = "<";
+  done.setAttribute("id", "Done");
+  done.innerText = "Done";
 
   const topRowButtons = document.createElement("div");
   for (let i = 0; i < topRow.length; i++) {
@@ -25,22 +32,13 @@ export const makeKeyboard = (parent) => {
   }
 
   const bottomRowButtons = document.createElement("div");
+  bottomRowButtons.appendChild(done);
   for (let i = 0; i < bottomRow.length; i++) {
     const letter = bottomRow[i];
     makeButton(letter, bottomRowButtons);
   }
 
-  const backSpace = document.createElement("button");
-
-  const done = document.createElement("button");
-
-  backSpace.setAttribute("id", "backspace");
-  backSpace.innerText = "<";
-  done.setAttribute("id", "Done");
-  done.innerText = "Done";
-
-  middleRowButtons.appendChild(backSpace);
-  bottomRowButtons.appendChild(done);
+  bottomRowButtons.appendChild(backSpace);
   parent.appendChild(topRowButtons);
   parent.appendChild(middleRowButtons);
   parent.appendChild(bottomRowButtons);
