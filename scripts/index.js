@@ -91,6 +91,8 @@ submit.addEventListener("click", () => {
   // if word does not exist in dictionary, give it a wobble
   if (!dictionaryChecker(guess)) {
     for (let i = 0; i < word.length; i++) {
+      currTurn[i].classList.remove("shake");
+      void currTurn[i].offsetWidth;
       currTurn[i].classList.add("shake");
     }
   }

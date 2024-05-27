@@ -56,7 +56,6 @@ export const dict = {
   roast: 0,
   ridge: 0,
   knife: 0,
-  "": 0,
   meter: 0,
   loose: 0,
   yacht: 0,
