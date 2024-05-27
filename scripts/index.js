@@ -45,7 +45,7 @@ let turn = 0;
 let guess = "";
 let letterCount = 0;
 let stars = 0;
-console.log(word);
+
 const gameArea = document.getElementById("game-area");
 
 // Make keyboard
@@ -77,12 +77,6 @@ buttons.forEach((button) => {
 // remove letters from dom, guess, and remove shake class
 backSpace.addEventListener("click", () => {
   if (letterCount > 0) {
-    console.log(
-      "Before Backspace - letterCount:",
-      letterCount,
-      "guess:",
-      guess
-    );
     const nextCell = letterCount - 1;
 
     currTurn[nextCell].innerText = "";
@@ -90,7 +84,6 @@ backSpace.addEventListener("click", () => {
 
     guess = guess.slice(0, guess.length - 1);
     letterCount--;
-    console.log("After Backspace - letterCount:", letterCount, "guess:", guess);
   }
 });
 
@@ -172,7 +165,6 @@ submit.addEventListener("click", () => {
         stars = level;
         newStreak = addStarsToStreak(currStreak, stars, today);
         window.localStorage.setItem("wordsle", JSON.stringify(newStreak));
-        console.log(stars, "stars");
       }
     }
   }
