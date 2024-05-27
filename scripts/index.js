@@ -127,7 +127,7 @@ submit.addEventListener("click", () => {
       const nextPuzzle = document.createElement("a");
       nextPuzzle.innerText = "click here";
       nextPuzzle.setAttribute("class", "next-link");
-
+      nextPuzzle.scrollIntoView();
       if (level === 0) {
         congratsMsgP.innerText += " Ready for a harder one?";
         nextPuzzle.setAttribute("href", "stage-two.html");
