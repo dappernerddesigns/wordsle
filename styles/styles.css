@@ -45,8 +45,8 @@ button {
   border-radius: 3px;
   padding: 2px;
   margin: 4px;
-  width: 28px;
-  height: 40px;
+  width: 32px;
+  height: 42px;
 }
 #Done,
 #backspace {
@@ -57,7 +57,7 @@ button {
 }
 
 #guesses {
-  margin: 50px 0;
+  margin: 25px 0;
   width: 100%;
 }
 
