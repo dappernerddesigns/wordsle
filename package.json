@@ -1,0 +1,19 @@
+{
+  "name": "wordsle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "animate.css": "^4.1.1"
+  }
+}
