@@ -1,6 +1,17 @@
 const streak = JSON.parse(window.localStorage.getItem("wordsle"));
 const listArea = document.getElementById("stats");
 
+const today = new Date();
+const checkVisit = (date) => {
+  const todaysDate = date.toDateString().split(" ");
+  const dayKey = `${todaysDate[1]} ${todaysDate[2]}`;
+
+  if (streak === null || !streak[dayKey]) {
+    window.location.replace("/");
+  }
+};
+checkVisit(today);
+
 for (const day in streak) {
   const stars = streak[day];
   const dateListItem = document.createElement("li");

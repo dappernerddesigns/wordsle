@@ -6,6 +6,7 @@ import {
 } from "./dictionary.js";
 import { makeGuessesInputs } from "./guessInputs.js";
 import { makeKeyboard } from "./keyboard.js";
+import { createModalFail, createModalSuccess } from "./modal.js";
 import { addStarsToStreak, dayCalculator } from "./statsAndStars.js";
 
 // fetch current stats from local storage, if not existing default to empty json object
@@ -115,38 +116,19 @@ submit.addEventListener("click", () => {
       }
     }
 
-    const linkToStats = document.createElement("a");
-    linkToStats.setAttribute("href", "stats.html");
-    linkToStats.innerText = "Show me my stats";
-    linkToStats.setAttribute("class", "stats-link");
-
     // if guessed correctly
     if (guess === word) {
-      const congratsMsgP = document.createElement("h3");
-      congratsMsgP.innerText = "Congratulations!";
-      const nextPuzzle = document.createElement("a");
-      nextPuzzle.innerText = "click here";
-      nextPuzzle.setAttribute("class", "next-link");
-      nextPuzzle.scrollIntoView();
       if (level === 0) {
-        congratsMsgP.innerText += " Ready for a harder one?";
-        nextPuzzle.setAttribute("href", "stage-two.html");
-        gameArea.appendChild(congratsMsgP);
-        gameArea.appendChild(nextPuzzle);
+        createModalSuccess(gameArea, 0);
       }
       if (level === 1) {
-        congratsMsgP.innerText += " Ready for a harder one?";
-        nextPuzzle.setAttribute("href", "stage-three.html");
-        gameArea.appendChild(congratsMsgP);
-        gameArea.appendChild(nextPuzzle);
+        createModalSuccess(gameArea, 1);
       }
       if (level === 2) {
+        createModalSuccess(gameArea, 2);
         stars = 3;
         newStreak = addStarsToStreak(currStreak, stars, today);
-        gameArea.appendChild(congratsMsgP);
         window.localStorage.setItem("wordsle", JSON.stringify(newStreak));
-
-        gameArea.appendChild(linkToStats);
       }
     } else {
       // move onto next row if there is another guess
@@ -156,14 +138,8 @@ submit.addEventListener("click", () => {
         turn++;
         currTurn = guessRows[turn].children;
       } else {
-        const todaysWord = document.createElement("h3");
-        todaysWord.innerText = `Today's word was ${word}`;
-        const commiserationsMsgP = document.createElement("h3");
-        commiserationsMsgP.innerText =
-          "Oh no! You have no more guesses!\n You'll have to try again tomorrow";
-        gameArea.appendChild(todaysWord);
-        gameArea.appendChild(commiserationsMsgP);
-        gameArea.appendChild(linkToStats);
+        createModalFail(gameArea, word);
+
         stars = level;
         newStreak = addStarsToStreak(currStreak, stars, today);
         window.localStorage.setItem("wordsle", JSON.stringify(newStreak));
